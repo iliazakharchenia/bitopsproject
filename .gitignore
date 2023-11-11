@@ -14,6 +14,9 @@
 # Generated files
 .idea/**/contentModel.xml
 
+# Targets
+/target/**
+
 # Sensitive or high-churn files
 .idea/**/dataSources/
 .idea/**/dataSources.ids
@@ -75,10 +78,6 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
-/target/test-classes/core/MainTest.class
-/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
-/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
-/target/classes/core/Main.class
 /.idea/misc.xml
 /.idea/jarRepositories.xml
 /.idea/.gitignore
