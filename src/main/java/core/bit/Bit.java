@@ -1,11 +1,21 @@
 package core.bit;
 
+import core.boolfunction.BooleanFunction;
+
 import java.util.Objects;
 
+/**
+ * Class which objects are a wrappers for
+ * boolean type variables with a specified name.
+ * It useful for a bit binary named variables for
+ * a high level binary logic implementation.
+ *
+ * @see    BitUtils
+ * @see    BooleanFunction
+ * @author Iliya Zakharchenia
+ */
 public class Bit {
-
     private final String name;
-
     private boolean statement;
 
     private synchronized void setStatement(boolean statement) {
@@ -66,8 +76,8 @@ public class Bit {
      * Constructs a Bit object with a bool statement and a
      * BitUtils.DEFAULT_NAME name within.
      *
-     * @param  statement  the bool statement within
-     * @see         BitUtils
+     * @param   statement   the bool statement within
+     * @see     BitUtils
      */
     public Bit(boolean statement) {
         this.statement = statement;
@@ -78,10 +88,10 @@ public class Bit {
      * Constructs a Bit object with a bool statement and a
      * name within.
      *
-     * @throws  IllegalArgumentException  when name is null or equals BitUtils.DEFAULT_NAME
-     * @param  statement  the bool statement within
-     * @param  name  name of Bit object
-     * @see         BitUtils
+     * @throws  IllegalArgumentException    when name is null or equals BitUtils.DEFAULT_NAME
+     * @param   statement                   the bool statement within
+     * @param   name                        name of Bit object
+     * @see     BitUtils
      */
     public Bit(boolean statement, String name) {
         if (name == null) throw new IllegalArgumentException("Argument 'name' should be not null!");
