@@ -1,12 +1,10 @@
 package core.boolfunction;
 
-import core.bit.Bit;
-
 /**
  * Functional interface for lambda type creation
  * of PrimitiveBooleanFunction anonymous classes with only
  * boolean process(Bit...bits) method.
- * <p>
+ * <br><br>
  * Example: PrimitiveBooleanFunction function = bits -> BitUtils.and(bits);
  *          boolean answer = function.process(true, true); // equals true
  *

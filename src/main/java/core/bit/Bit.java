@@ -94,7 +94,8 @@ public class Bit {
      * @see     BitUtils
      */
     public Bit(boolean statement, String name) {
-        if (name == null) throw new IllegalArgumentException("Argument 'name' should be not null!");
+        if (name == null || name.isBlank() || name.isEmpty())
+            throw new IllegalArgumentException("Argument 'name' should be valid!");
         if (name.equals(BitUtils.DEFAULT_NAME)) throw new IllegalArgumentException(
                 "Argument 'name' should be not equal default name which is '"
                         +BitUtils.DEFAULT_NAME+"'!");
