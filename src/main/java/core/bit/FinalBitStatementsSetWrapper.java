@@ -1,11 +1,26 @@
 package core.bit;
 
+import core.boolfunction.BooleanFunction;
+
 import java.util.LinkedHashSet;
 import java.util.UUID;
+import java.util.function.Consumer;
 
-public class BitStatementsSetWrapper {
+public class FinalBitStatementsSetWrapper {
     private final LinkedHashSet<FinalBit> set;
     private final UUID uuid = UUID.randomUUID();
+
+    public final void forEach(Consumer<? super FinalBit> action) {
+        for (FinalBit bit: this.set) {
+            action.accept(bit);
+        }
+    }
+
+    public final FinalBit perform(BooleanFunction function, String name) {
+        Bit[] arr = new Bit[set.size()];
+        set.toArray(arr);
+        return new FinalBit(function.process(arr).isTrue(), name);
+    }
 
     @Override
     public int hashCode() {
@@ -15,7 +30,7 @@ public class BitStatementsSetWrapper {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof BitStatementsSetWrapper that)) return false;
+        if (!(o instanceof FinalBitStatementsSetWrapper that)) return false;
 
         return uuid.equals(that.uuid);
     }
@@ -29,7 +44,7 @@ public class BitStatementsSetWrapper {
         return "BitStatementsSetWrapper{" + sb + "}";
     }
 
-    public BitStatementsSetWrapper(FinalBit...bits) {
+    public FinalBitStatementsSetWrapper(FinalBit...bits) {
         this.set = new LinkedHashSet<>();
         for (FinalBit bit: bits) {
             boolean isAdded = this.set.add(bit);

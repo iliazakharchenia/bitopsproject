@@ -22,6 +22,11 @@ public class FinalBit extends Bit {
         return "Final" + super.toString();
     }
 
+    @Override
+    public synchronized boolean invert() {
+        return this.isTrue();
+    }
+
     public FinalBit(boolean statement, String name) {
         super(statement, name);
     }

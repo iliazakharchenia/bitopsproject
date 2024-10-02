@@ -1,6 +1,6 @@
 package core.truthtable;
 
-import core.bit.BitStatementsSetWrapper;
+import core.bit.FinalBitStatementsSetWrapper;
 import core.bit.FinalBit;
 import core.boolfunction.BooleanFunctionUtils;
 
@@ -19,5 +19,5 @@ import java.util.Map;
 @FunctionalInterface
 public interface TruthTable {
 
-    Map<BitStatementsSetWrapper, FinalBit> getTruthTable();
+    Map<FinalBitStatementsSetWrapper, FinalBit> getTruthTable();
 }
