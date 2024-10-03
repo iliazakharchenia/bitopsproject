@@ -23,5 +23,4 @@ class FinalBitStatementsSetWrapperTest {
         Assertions.assertThrows(RuntimeException.class,
                 () -> new FinalBitStatementsSetWrapper(first, second, third, fourth));
     }
-
 }

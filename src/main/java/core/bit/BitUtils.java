@@ -81,16 +81,39 @@ public abstract class BitUtils {
     }
 
     public static boolean[] bitSequenceFromNumber(int number) {
+        if (number < 0)
+            throw new IllegalArgumentException("Number shouldn't been less then 0!");
+
         if (number == 0) return new boolean[]{false};
         if (number == 1) return new boolean[]{true};
 
         int length = (int) (Math.ceil(Math.log(number+0.1)/Math.log(2)));
         boolean[] sequence = new boolean[length];
-        for (int i = length-1; i > -1; i--) {
-            if ((number % Math.pow(2, length-i-1)) % 2 == 0) sequence[i] = false;
-            else sequence[i] = true;
+        int different = number;
+
+        for (int i = 0; i < length; i++) {
+            int value = (int) (Math.abs(different) / Math.pow(2, length - i - 1));
+            if (value % 2 == 0) sequence[i] = false;
+            else {
+                sequence[i] = true;
+                different -= Math.pow(2, length-i-1);
+            }
         }
 
         return sequence;
+    }
+
+    public static boolean[] withLeadingZeroes(int quantityOfZeroes, boolean[] sequence) {
+        if (quantityOfZeroes < 0)
+            throw new IllegalArgumentException("Quantity of leading zeroes shouldn't be less then 0!");
+        if (quantityOfZeroes == 0) return sequence;
+
+        boolean[] newSequence = new boolean[quantityOfZeroes + sequence.length];
+        for (int i = 0; i < newSequence.length; i++) {
+            if (i < quantityOfZeroes) newSequence[i] = false;
+            else newSequence[i] = sequence[i-quantityOfZeroes];
+        }
+
+        return newSequence;
     }
 }
