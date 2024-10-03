@@ -2,7 +2,12 @@ package core.boolfunction;
 
 public class FixedParamsBooleanFunction implements PrimitiveBooleanFunction {
     private final ArgumentsNamesSetWrapper namesSet;
+
     private final PrimitiveBooleanFunction function;
+
+    public String getParameterNameByIndex(int index) {
+        return this.namesSet.getNameOfParam(index);
+    }
 
     public FixedParamsBooleanFunction(ArgumentsNamesSetWrapper namesSet, PrimitiveBooleanFunction function) {
         this.namesSet = namesSet;

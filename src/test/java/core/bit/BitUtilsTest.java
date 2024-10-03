@@ -56,6 +56,46 @@ class BitUtilsTest {
         }
     }
 
+    @ParameterizedTest
+    @CsvSource({"00", "01", "10", "11", "000", "001", "010", "011", "100", "101", "110", "111"})
+    void numberFromBitSequenceShouldReturnCorrectResults(String input) {
+        Bit[] bitArray = extractBitArrayFromInputString(input);
+        boolean[] bits = new boolean[bitArray.length];
+        int index = 0;
+        for (Bit bit: bitArray) {
+            bits[index] = bit.isTrue();
+            index++;
+        }
+
+        if (input.length() == 2) Assertions.assertEquals(
+                BitUtils.numberFromBitSequence(bits),
+                fromBoolStatement(bits[1]) + fromBoolStatement(bits[0])*2);
+        if (input.length() == 3) Assertions.assertEquals(
+                BitUtils.numberFromBitSequence(bits),
+                fromBoolStatement(bits[2]) + fromBoolStatement(bits[1])*2 + fromBoolStatement(bits[0])*4);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"0", "1", "10", "11", "100", "101", "110", "111"})
+    void bitSequenceFromNumberShouldReturnCorrectData(String input) {
+        Bit[] bitArray = extractBitArrayFromInputString(input);
+        boolean[] bits = new boolean[bitArray.length];
+        int index = 0;
+        for (Bit bit: bitArray) {
+            bits[index] = bit.isTrue();
+            index++;
+        }
+
+        boolean[] sequence = BitUtils.bitSequenceFromNumber(BitUtils.numberFromBitSequence(bits));
+
+        Assertions.assertArrayEquals(bits, sequence);
+    }
+
+    private int fromBoolStatement(boolean bit) {
+        if (bit) return 1;
+        else return 0;
+    }
+
     private Bit[] extractBitArrayFromInputString(String input) {
         char[] inputArray = input.toCharArray();
         Bit[] bitArray = new Bit[inputArray.length];

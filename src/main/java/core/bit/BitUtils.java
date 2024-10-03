@@ -68,4 +68,29 @@ public abstract class BitUtils {
         }
         return false;
     }
+
+    public static int numberFromBitSequence(boolean... bits) {
+        int sum = 0;
+        int len = bits.length;
+
+        for (int i = len-1; i > -1; i = i-1) {
+            if (bits[i]) sum += Math.pow(2, len-i-1);
+        }
+
+        return sum;
+    }
+
+    public static boolean[] bitSequenceFromNumber(int number) {
+        if (number == 0) return new boolean[]{false};
+        if (number == 1) return new boolean[]{true};
+
+        int length = (int) (Math.ceil(Math.log(number+0.1)/Math.log(2)));
+        boolean[] sequence = new boolean[length];
+        for (int i = length-1; i > -1; i--) {
+            if ((number % Math.pow(2, length-i-1)) % 2 == 0) sequence[i] = false;
+            else sequence[i] = true;
+        }
+
+        return sequence;
+    }
 }

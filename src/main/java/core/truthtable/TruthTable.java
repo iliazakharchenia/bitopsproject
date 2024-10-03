@@ -1,23 +1,19 @@
 package core.truthtable;
 
-import core.bit.FinalBitStatementsSetWrapper;
-import core.bit.FinalBit;
-import core.boolfunction.BooleanFunctionUtils;
-
-import java.util.Map;
+import core.boolfunction.PrimitiveBooleanFunction;
 
 /**
- * Functional interface for lambda type creation of
- * table of truth implementation anonymous classes.
- * <br><br>
- * Example:
+ * Interface for operation with the instances like
+ * tables of truth.
  *
- * @see    core.bit.FinalBit
- * @see    BooleanFunctionUtils
+ * @see    FinalTruthTableForFixedBooleanFunction
  * @author Iliya Zakharchenia
  */
-@FunctionalInterface
-public interface TruthTable {
+public interface TruthTable extends PrimitiveBooleanFunction {
 
-    Map<FinalBitStatementsSetWrapper, FinalBit> getTruthTable();
+    String getNameOfParamByIndex(int param);
+
+    String getNameOfResult();
+
+    int getParametersSize();
 }

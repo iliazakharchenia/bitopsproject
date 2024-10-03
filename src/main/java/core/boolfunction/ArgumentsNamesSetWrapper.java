@@ -2,16 +2,22 @@ package core.boolfunction;
 
 import java.util.LinkedHashSet;
 import java.util.UUID;
-import java.util.function.Consumer;
 
-class ArgumentsNamesSetWrapper {
+public class ArgumentsNamesSetWrapper {
     private final LinkedHashSet<String> set;
     private final UUID uuid = UUID.randomUUID();
 
-    public final void forEach(Consumer<? super String> action) {
-        for (String name: this.set) {
-            action.accept(name);
+    public String getNameOfParam(int paramNumber) {
+        if (paramNumber >= set.size() || paramNumber < 0)
+            throw new IllegalArgumentException("Parameter number should be >= 0 and <= size of arguments set!");
+
+        int index = 0;
+        for (String name: set) {
+            if (index == paramNumber) return name;
+            index++;
         }
+
+        throw new IllegalArgumentException("Parameter with such number isn't exists!");
     }
 
     public int size() {
