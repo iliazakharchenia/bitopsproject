@@ -3,6 +3,12 @@ package core.boolfunction;
 import java.util.LinkedHashSet;
 import java.util.UUID;
 
+/**
+ * That class is used for encapsulate the names of the
+ * params of the fixed params functions wrappers.
+ *
+ * @see FixedParamsBooleanFunction
+ */
 public class ArgumentsNamesSetWrapper {
     private final LinkedHashSet<String> set;
     private final UUID uuid = UUID.randomUUID();
