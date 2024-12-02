@@ -3,11 +3,22 @@ package core.bit;
 import core.boolfunction.BooleanFunction;
 
 import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 import java.util.function.Consumer;
 
+/**
+ * This class provides a functionality to encapsulate
+ * the FinalBit values to the set and can perform an
+ * actions over them using the forEach method. It also
+ * can perform a function and return a result of the
+ * execution of it using a perform method with a name
+ * of the future FinalBit result as name in the method
+ * parameters.
+ *
+ */
 public class FinalBitStatementsSetWrapper {
-    private final LinkedHashSet<FinalBit> set;
+    private final Set<FinalBit> set;
     private final UUID uuid = UUID.randomUUID();
 
     public final void forEach(Consumer<? super FinalBit> action) {
